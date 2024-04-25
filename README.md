@@ -19,6 +19,11 @@ i have used data sources for SSM parameter and ami id for ec2 instance.
 
 ## Step 7:
 once all created you do terraform init,terraform plan .
-when i do terraform plan i got the error as the public subnet2 overlaps with public subente1 hence i changed the value and i have done it.
+
+## Step 8:
+reg the environment  i have created two workspaces named dev and prod.based on that i have used in terraform instance_type.
+
+## Troubleshooting:
+## when i do terraform plan i got the error as the public subnet2 overlaps with public subente1 hence i changed the value and i have done it.
 
 using the above code i could able to create the terraform resources successfully.

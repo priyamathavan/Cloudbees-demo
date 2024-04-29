@@ -6,10 +6,10 @@ first you have to create a providers.tf file defining aws provider and region,ve
 create a backend.tf file specifying the s3 bucket and dynamo db table for state lock.
 s3 bucket and dynamo db table i have created manually in aws console
 ## Step 3:
-create a network.tf under compute module specify the components like VPC,IGW,SUBNETS,ROUTE TABLE,SECURITY GROUPS for ec2,ELB AND DB2 instances.
+create a network module specify the components like VPC,IGW,SUBNETS,ROUTE TABLE,SECURITY GROUPS for ec2,ELB AND DB2 instances.
 
 ## Step 4:
-create ec2.tf,elb.tf and rds.tf to create EC2,RDS AND ELB .
+create ec2.tf,elb.tf and rds.tf to create EC2,RDS AND ELB under compute module.using module output of network refer the security group /subnet network components.
 
 ## Step 5:
 create ssm paramter to secure db password .this i have created via aws CLI

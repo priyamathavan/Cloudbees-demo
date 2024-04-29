@@ -2,8 +2,8 @@ resource "aws_lb" "cloudbees-alb" {
   name               = "cloudbees-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.ec2_sg.id]
-  subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
+  security_groups    = [module.network.ec2_sg_id]
+  subnets            = [module.network.public_subnet_a_id,module.network.public_subnet_b_id]
 }
 
 resource "aws_lb_listener" "cloudbees_lb_listener" {
@@ -22,5 +22,5 @@ resource "aws_lb_target_group" "cloudbees_tg" {
   target_type = "instance"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.cloudbees_vpc.id
+  vpc_id   = module.network.vpc_id
 }

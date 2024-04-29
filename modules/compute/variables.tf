@@ -58,6 +58,3 @@ variable "skip_final_snapshot" {
   default     = true   #This is good when you are working in development environment, adjust as per your need.
 }
 
-variable "network_cidr" {
-  default = "10.0.0.0/16"
-}

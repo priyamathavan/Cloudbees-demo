@@ -121,5 +121,3 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
     Name = "RDS Subnet Group"
   }
 }
-
-

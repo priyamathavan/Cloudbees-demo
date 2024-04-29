@@ -1,9 +1,13 @@
+module "network" {
+  source = "../network"
+}
+
 resource "aws_instance" "ec2_instance" {
   ami           = data.aws_ami.amazon-linux-2.id 
   instance_type = lookup(var.instance_type,terraform.workspace)
   key_name      = aws_key_pair.public_rsa_key.key_name
-  subnet_id   = aws_subnet.public_a.id
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  subnet_id   = module.network.public_subnet_a_id
+  vpc_security_group_ids = [module.network.ec2_sg_id]
   tags = {
     Name = "cloudbees-tech-instance"
     Environment = terraform.workspace
@@ -16,8 +20,8 @@ resource "aws_instance" "ec2_instance_standby" {
   ami           = data.aws_ami.amazon-linux-2.id 
   instance_type = lookup(var.instance_type,terraform.workspace)
   key_name      = aws_key_pair.public_rsa_key.key_name
-  subnet_id   = aws_subnet.public_b.id
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  subnet_id   = module.network.public_subnet_b_id
+  vpc_security_group_ids = [module.network.ec2_sg_id]
   tags = {
     Name = "cloudbees-tech-instance"
     Environment = terraform.workspace
